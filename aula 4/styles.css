@@ -1,0 +1,13 @@
+
+        #grupo{
+            display: flex;
+            justify-content: center;
+        }
+    .grupo-item {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 10px solid powderblue;
+        margin: 10px;
+    }
+ </style>
