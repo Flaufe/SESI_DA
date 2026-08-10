@@ -133,3 +133,40 @@ header p {
         margin: 20px;
 
     }
+
+    .grupo-dicas{
+        display: flex;
+        margin-top: 100px;
+        justify-content: center;
+
+    }
+
+    .dicas-le{
+        width: 50%;
+    }
+
+    .dicas-le{
+        width: 50%;
+    }
+
+    .dicas-le h1{
+        font-size: 41px;
+        font-weight: bold;
+    }
+
+    .dicas-le span{
+        font-weight: bold;
+        margin-top: 100px;
+    }
+    .dicas-le p{
+        font-size: 28px;
+        color: #5c5c5c;
+
+    }
+
+    .dicas-ld img{
+        width: 684px;
+        height: 1254px;
+        border-radius: 29px;
+
+    }
