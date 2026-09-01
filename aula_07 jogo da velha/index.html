@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jogo da Velha</title>
+
+    <style>
+        .tabuleiro {
+            display: grid;
+            grid-template-columns: 80px 80px 80px;
+            gap: 5px;
+        }
+
+        button {
+            width: 80px;
+            height: 80px;
+            font-size: 30px;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #reiniciar {
+            width: 120px;
+            height: 40px;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Jogo da Velha</h1>
+
+    <h2 id="mensagem">Vez do X</h2>
+
+    <div class="tabuleiro">
+        <button onclick="jogar(0)"></button>
+        <button onclick="jogar(1)"></button>
+        <button onclick="jogar(2)"></button>
+
+        <button onclick="jogar(3)"></button>
+        <button onclick="jogar(4)"></button>
+        <button onclick="jogar(5)"></button>
+
+        <button onclick="jogar(6)"></button>
+        <button onclick="jogar(7)"></button>
+        <button onclick="jogar(8)"></button>
+    </div>
+
+    <button id="reiniciar" onclick="reiniciar()">Reiniciar</button>
+
+    <script>
+        let jogador = "X";
+        let botoes = document.querySelectorAll(".tabuleiro button");
+        let jogoAcabou = false;
+
+        function jogar(posicao) {
+
+            if (botoes[posicao].innerHTML == "" && jogoAcabou == false) {
+
+                botoes[posicao].innerHTML = jogador;
+
+                verificarVitoria();
+
+                if (jogoAcabou == false) {
+                    if (jogador == "X") {
+                        jogador = "O";
+                    } else {
+                        jogador = "X";
+                    }
+
+                    document.getElementById("mensagem").innerHTML = "Vez do " + jogador;
+                }
+            }
+        }
+
+        function verificarVitoria() {
+
+            let combinacoes = [
+                [0, 1, 2],
+                [3, 4, 5],
+                [6, 7, 8],
+                [0, 3, 6],
+                [1, 4, 7],
+                [2, 5, 8],
+                [0, 4, 8],
+                [2, 4, 6]
+            ];
+
+            for (let combinacao of combinacoes) {
+
+                let a = combinacao[0];
+                let b = combinacao[1];
+                let c = combinacao[2];
+
+                if (
+                    botoes[a].innerHTML != "" &&
+                    botoes[a].innerHTML == botoes[b].innerHTML &&
+                    botoes[a].innerHTML == botoes[c].innerHTML
+                ) {
+                    document.getElementById("mensagem").innerHTML =
+                        "Jogador " + jogador + " ganhou!";
+
+                    jogoAcabou = true;
+                }
+            }
+        }
+
+        function reiniciar() {
+
+            for (let botao of botoes) {
+                botao.innerHTML = "";
+            }
+
+            jogador = "X";
+            jogoAcabou = false;
+
+            document.getElementById("mensagem").innerHTML = "Vez do X";
+        }
+    </script>
+
+</body>
+</html>
